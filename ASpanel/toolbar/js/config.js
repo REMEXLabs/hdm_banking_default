@@ -40,8 +40,8 @@ var ApplicationLabels = {
             de : "Text und Anzeige"
         },
         category_2 : {
-            en : "Layout and Navigation",
-            de : "Layout und Navigation"
+          en : "Layout and Navigation",
+          de : "Layout und Navigation"
         },
         category_3 : {
             en: "Links and Buttons",
@@ -51,7 +51,7 @@ var ApplicationLabels = {
             en: "Language Settings",
             de: "Spracheinstellungen"
         },
-        
+
     },
     buttons : {
         resetButton: {
@@ -226,28 +226,6 @@ var UIComponentList = {
         }],
         changeEvent : function(value) {
             parent.AS_picsupport.activate(value);
-        }
-    },
-
-    //#### TABLE OF CONTENT ####//
-
-    table_of_content : {
-
-        ui_component_id : "table_of_content",
-        title : {
-            en : "Show table of contents",
-            de : "Inhaltsverzeichnis anzeigen"
-        },
-        defaultValue : false,
-        defaultValue : false,
-        category : "cat2",
-        type : TYPE_CHECKBOX,
-        explanation : {
-            en : "Adds a table of contents to the top of the page.",
-            de : "Fügt am Anfang der Seite ein Inhaltsverzeichnis ein."
-        },
-        changeEvent : function(value) {
-            parent.AS_showTableOfContents(value);
         }
     },
 

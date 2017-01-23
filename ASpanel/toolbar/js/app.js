@@ -105,9 +105,8 @@ function overwriteDefaultWithGpiiSettings() {
     console.log("Overwrite Default Values");
 
     textSizeSlider.overwriteDefault();
-    linepacingSlider.overwriteDefault();
+    lineSpacingSlider.overwriteDefault();
     textStyleDropdown.overwriteDefault();
-    tableOfContent_ckb.overwriteDefault();
     picsupportDropdown.overwriteDefault();
 
 }
@@ -118,10 +117,9 @@ function overwriteDefaultWithGpiiSettings() {
 ////////////////////////////
 
 var textSizeSlider;
-var linepacingSlider;
+var lineSpacingSlider;
 var textStyleDropdown;
 var picsupportDropdown;
-var tableOfContent_ckb;
 
 var signLanguageLanguageDropdown;
 var signLanguageInterpreterNameDropdown;
@@ -182,7 +180,7 @@ $(function() {
 
         // HTML string for tabs
         var html_cat1 = "";
-        var html_cat2 = "";
+        // var html_cat2 = "";
         var html_cat3 = "";
         var html_cat4 = "";
 
@@ -199,10 +197,6 @@ $(function() {
 
                 case "cat1":
                     html_cat1 += createComponent(UIComponentList[component]);
-                    break;
-
-                case "cat2":
-                    html_cat2 += createComponent(UIComponentList[component]);
                     break;
 
                 case "cat3":
@@ -222,7 +216,6 @@ $(function() {
 
         // Append html code.
         $("#category-1-dynamic-components .componentlist").html(html_cat1);
-        $("#category-2-dynamic-components .componentlist").html(html_cat2);
         $("#category-3-dynamic-components .componentlist").html(html_cat3);
         $("#category-4-dynamic-components .componentlist").html(html_cat4);
 
@@ -262,18 +255,14 @@ $(function() {
         textSizeSlider = new AS_Slider();
         textSizeSlider.init("textSize_slider");
 
-        linepacingSlider = new AS_Slider();
-        linepacingSlider.init("lineSpacing_slider");
+        lineSpacingSlider = new AS_Slider();
+        lineSpacingSlider.init("lineSpacing_slider");
 
         textStyleDropdown = new AS_DropDown();
         textStyleDropdown.init("textStyle_dropdown");
 
         picsupportDropdown = new AS_DropDown();
         picsupportDropdown.init("picsupport_dropdown");
-
-        tableOfContent_ckb = new AS_CheckBox();
-        tableOfContent_ckb.init("table_of_content");
-        //console.log(tableOfContent_ckb.getValue());
 
         signLanguageLanguageDropdown = new AS_DropDown();
         signLanguageLanguageDropdown.init("signlanguageLanguage_dropdown");
@@ -292,8 +281,7 @@ $(function() {
             console.log("Reset all");
 
              textSizeSlider.reset();
-             linepacingSlider.reset();
-             tableOfContent_ckb.reset();
+             lineSpacingSlider.reset();
              textStyleDropdown.reset();
              signLanguageLanguageDropdown.reset();
              signLanguageInterpreterNameDropdown.reset();
@@ -311,9 +299,8 @@ $(function() {
             console.log("Overwrite Default Values");
 
             textSizeSlider.overwriteDefault();
-            linepacingSlider.overwriteDefault();
+            lineSpacingSlider.overwriteDefault();
             textStyleDropdown.overwriteDefault();
-            tableOfContent_ckb.overwriteDefault();
             picsupportDropdown.overwriteDefault();
 
         }

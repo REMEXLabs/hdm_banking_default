@@ -30,7 +30,7 @@ var gpiiUser = {
 
 /*
  * Contains all Settings stored from requested GPII Preference Sets.
- * Not defined Settings are 'null'. 
+ * Not defined Settings are 'null'.
  */
 var gpiiUserSettings = {
    simplifiedUiEnabled: null,
@@ -43,14 +43,14 @@ var gpiiUserSettings = {
    interpreterType: null,
    interpreterName: null,
    toc: null,
-   links:null, 
+   links:null,
    highContrastEnabled: null,
    contrastTheme: null,
    inputsLarger: null
 };
 
 /*
- * GPII Connection and methods to read the preferences and set the ASpanel settings to personalize the UI. 
+ * GPII Connection and methods to read the preferences and set the ASpanel settings to personalize the UI.
  */
 var GPIIconnector = (function() {
 
@@ -59,7 +59,7 @@ var GPIIconnector = (function() {
 
     /**
      * Helper function to transform a textSize to a multiplier between min and max value of the slider.
-     * @param {number} inputValue   textSize 
+     * @param {number} inputValue   textSize
      */
     function textSize2Mulitplier(inputValue) {
         if (inputValue < 1.0) {
@@ -84,7 +84,7 @@ var GPIIconnector = (function() {
 
     /**
      * Helper function to transform a lineSpace to a multiplier between min and max value of the slider.
-     * @param {number} inputValue   lineSpaceing 
+     * @param {number} inputValue   lineSpaceing
      */
     function lineSpace2Mulitplier(inputValue) {
         if (inputValue < 1.0) {
@@ -94,11 +94,11 @@ var GPIIconnector = (function() {
             inputValue = 3.0;
         }
 
-        return inputValue; 
+        return inputValue;
     }
 
     /**
-     * Print gpiiUserSettings to the console. 
+     * Print gpiiUserSettings to the console.
      * Has to wait for the server response. Called before it will get only null in gpiiUserSettings.
      */
     function showGpiiUserSetting() {
@@ -107,20 +107,20 @@ var GPIIconnector = (function() {
             console.log(key + " : " + gpiiUserSettings[key]);
          }
     };
-    
+
     /**
      * Clear all setttings from 'gpiiUserSettings'
      */
     function clearGpiiUserSettings() {
         for (var key in gpiiUserSettings) {
-                       
+
             gpiiUserSettings[key] = null;
         }
     }
-    
+
     /**
      * Getting a preference set from the GPII server.
-     * @param {String} user     valid username for gpii settings 
+     * @param {String} user     valid username for gpii settings
      */
     module.getPreferenceSet = function(user,return2Main) {
         var xhr = ("XMLHttpRequest" in window) ? new XMLHttpRequest() : new ActiveXObject("Msxml3.XMLHTTP");
@@ -136,7 +136,7 @@ var GPIIconnector = (function() {
                 }
                 else {
                     console.log("# GPII Connection failed: no server response!");
-                   
+
                     return2Main();
                      // Try to get Settings from Chrome Extension
                     overwriteDefaultWithGpiiSettings();
@@ -144,13 +144,13 @@ var GPIIconnector = (function() {
             }
         };
         xhr.send(null);
-    }; 
+    };
 
 
     /**
      * Parse Preference Set from LOCAL FLOW MANAGER:
-     * Check first for application-specific terms. 
-     * If there are no application-specific terms then try to get common terms. 
+     * Check first for application-specific terms.
+     * If there are no application-specific terms then try to get common terms.
      * Note: Strictly speaking, only application-specific terms for the current app should be returned.
      */
     module.readPreferenceSet = function(GPIIresponse,return2Main) {
@@ -187,7 +187,7 @@ var GPIIconnector = (function() {
             gpiiUserSettings.textSize = preferenceSet["http://registry.gpii.net/common/fontSize"];
         }
 
-        //## lineSpacing ##//        
+        //## lineSpacing ##//
         if (preferenceSet["http://registry.gpii.net/applications/eu.gpii.olb"].lineSpacing != undefined) {
             gpiiUserSettings.lineSpacing = preferenceSet["http://registry.gpii.net/applications/eu.gpii.olb"].lineSpacing;
         }
@@ -195,7 +195,7 @@ var GPIIconnector = (function() {
             gpiiUserSettings.lineSpacing = preferenceSet["http://registry.gpii.net/common/lineSpacing"];
         }
 
-        //## textStyle ##//             
+        //## textStyle ##//
         if (preferenceSet["http://registry.gpii.net/applications/eu.gpii.olb"].textStyle != undefined) {
             gpiiUserSettings.textStyle = preferenceSet["http://registry.gpii.net/applications/eu.gpii.olb"].textStyle;
         }
@@ -203,7 +203,7 @@ var GPIIconnector = (function() {
             gpiiUserSettings.textStyle = preferenceSet["http://registry.gpii.net/common/textFont"];
         }
 
-        //## pictogramsEnabled ##//        
+        //## pictogramsEnabled ##//
         if (preferenceSet["http://registry.gpii.net/applications/eu.gpii.olb"].pictogramsEnabled != undefined) {
             gpiiUserSettings.pictogramsEnabled = preferenceSet["http://registry.gpii.net/applications/eu.gpii.olb"].pictogramsEnabled;
         }
@@ -211,7 +211,7 @@ var GPIIconnector = (function() {
             gpiiUserSettings.pictogramsEnabled = preferenceSet["http://registry.gpii.net/common/picSupport"];
         }
 
-        //## signLanguageEnabled ##//            
+        //## signLanguageEnabled ##//
         if (preferenceSet["http://registry.gpii.net/applications/eu.gpii.olb"].signLanguage != undefined) {
             gpiiUserSettings.signLanguage = preferenceSet["http://registry.gpii.net/applications/eu.gpii.olb"].signLanguage;
         }
@@ -219,15 +219,15 @@ var GPIIconnector = (function() {
             gpiiUserSettings.signLanguage = preferenceSet["http://registry.gpii.net/common/signLanguage"];
         }
 
-          //## signLanguage ##//            
+          //## signLanguage ##//
         if (preferenceSet["http://registry.gpii.net/applications/eu.gpii.olb"].signLanguageEnabled != undefined) {
             gpiiUserSettings.signLanguageEnabled = preferenceSet["http://registry.gpii.net/applications/eu.gpii.olb"].signLanguageEnabled;
         }
         else if (preferenceSet["http://registry.gpii.net/common/signLanguageEnabled"] != undefined) {
             gpiiUserSettings.signLanguageEnabled = preferenceSet["http://registry.gpii.net/common/signLanguageEnabled"];
         }
-        
-        //## toc ##//            
+
+        //## toc ##//
         if (preferenceSet["http://registry.gpii.net/applications/eu.gpii.olb"].toc != undefined) {
             gpiiUserSettings.toc = preferenceSet["http://registry.gpii.net/applications/eu.gpii.olb"].toc;
         }
@@ -235,7 +235,7 @@ var GPIIconnector = (function() {
             gpiiUserSettings.toc = preferenceSet["http://registry.gpii.net/common/toc"];
         }
 
-        //## highContrastEnabled ##//            
+        //## highContrastEnabled ##//
         if (preferenceSet["http://registry.gpii.net/applications/eu.gpii.olb"].highContrastEnabled != undefined) {
             gpiiUserSettings.highContrastEnabled = preferenceSet["http://registry.gpii.net/applications/eu.gpii.olb"].highContrastEnabled;
         }
@@ -243,7 +243,7 @@ var GPIIconnector = (function() {
             gpiiUserSettings.highContrastEnabled = preferenceSet["http://registry.gpii.net/common/highContrastEnabled"];
         }
 
-        //## highContrast ##//            
+        //## highContrast ##//
         if (preferenceSet["http://registry.gpii.net/applications/eu.gpii.olb"].contrastTheme != undefined) {
             gpiiUserSettings.contrastTheme = preferenceSet["http://registry.gpii.net/applications/eu.gpii.olb"].contrastTheme;
         }
@@ -253,16 +253,16 @@ var GPIIconnector = (function() {
 
         // Print GPII user Settings
         showGpiiUserSetting();
-        module.overwriteASpanelUIComponentList(return2Main);  
+        module.overwriteASpanelUIComponentList(return2Main);
     };
 
 
     /**
-     * Overwrite default values in UIComponentList of the ASpanel. 
+     * Overwrite default values in UIComponentList of the ASpanel.
      */
     module.overwriteASpanelUIComponentList = function(return2Main) {
-       
-        
+
+
         for (var key in gpiiUserSettings) {
 
             // check for set parameter to avoid 'null' setting
@@ -270,36 +270,36 @@ var GPIIconnector = (function() {
 
                 switch(key) {
 
-                    case "textSize":              
+                    case "textSize":
                         UIComponentList.textSize_slider.defaultValue = textSize2Mulitplier(gpiiUserSettings[key]);
                         console.log("TextSize");
                         break;
 
-                     case "lineSpacing":              
+                     case "lineSpacing":
                         UIComponentList.lineSpacing_slider.defaultValue = lineSpace2Mulitplier(gpiiUserSettings[key]);
                         console.log("LineSpacing");
                         break;
 
-                     case "textStyle":              
+                     case "textStyle":
                         UIComponentList.textStyle_dropdown.defaultValue.option_id = gpiiUserSettings[key];
                         console.log("TextStyle");
                         break;
 
                      case "pictogramsEnabled":
-                        if (gpiiUserSettings[key]) { 
-                            UIComponentList.picsupport_dropdown.defaultValue.option_id = "picsupport-on";                    
+                        if (gpiiUserSettings[key]) {
+                            UIComponentList.picsupport_dropdown.defaultValue.option_id = "picsupport-on";
                         } else {
                             UIComponentList.picsupport_dropdown.defaultValue.option_id = "picsupport-off";
                         }
                         console.log("Picsupport");
                         break;
 
-                     case "toc":              
-                        UIComponentList.table_of_content.defaultValue = gpiiUserSettings[key];
-                        console.log("Table of Content");
-                        break;
+                    //  case "toc":
+                    //     UIComponentList.table_of_content.defaultValue = gpiiUserSettings[key];
+                    //     console.log("Table of Content");
+                    //     break;
 
-                     case "contrastTheme":              
+                     case "contrastTheme":
                         //UIComponentList.textSize_slider.defaultValue = textSize2Mulitplier(gpiiUserSettings[key]);
                         console.log("ContrastTheme");
                         break;
@@ -309,36 +309,36 @@ var GPIIconnector = (function() {
                 }
             }
 
-            // Reset defaultValues to resetValue. 
+            // Reset defaultValues to resetValue.
             else {
                 switch(key) {
 
-                    case "textSize":              
+                    case "textSize":
                         UIComponentList.textSize_slider.defaultValue = UIComponentList.textSize_slider.resetValue;
                         console.log("TextSize reset");
                         break;
 
-                     case "lineSpacing":              
+                     case "lineSpacing":
                         UIComponentList.lineSpacing_slider.defaultValue = UIComponentList.lineSpacing_slider.resetValue;
                         console.log("LineSpacing reset");
                         break;
 
-                     case "textStyle":              
+                     case "textStyle":
                         UIComponentList.textStyle_dropdown.defaultValue.option_id = UIComponentList.textStyle_dropdown.resetValue.option_id;
                         console.log("TextStyle reset");
                         break;
 
-                     case "pictogramsEnabled":         
-                        UIComponentList.picsupport_dropdown.defaultValue.option_id = UIComponentList.picsupport_dropdown.resetValue.option_id;                    
+                     case "pictogramsEnabled":
+                        UIComponentList.picsupport_dropdown.defaultValue.option_id = UIComponentList.picsupport_dropdown.resetValue.option_id;
                         console.log("Picsupport reset");
                         break;
 
-                     case "toc":              
-                        UIComponentList.table_of_content.defaultValue = UIComponentList.table_of_content.resetValue;
-                        console.log("Table of Content reset");
-                        break;
+                    //  case "toc":
+                    //     UIComponentList.table_of_content.defaultValue = UIComponentList.table_of_content.resetValue;
+                    //     console.log("Table of Content reset");
+                    //     break;
 
-                     case "contrastTheme":              
+                     case "contrastTheme":
                         //UIComponentList.textSize_slider.defaultValue = textSize2Mulitplier(gpiiUserSettings[key]);
                         console.log("ContrastTheme reset");
                         break;
@@ -364,13 +364,13 @@ var GPIIconnector = (function() {
     module.readPreferenceSetFromChromeExtension = function(preferenceSet) {
         console.log("## Reading Preference Set from GPII Chrome Extension");
 
-        
+
          clearGpiiUserSettings();
-         
+
 
         if (preferenceSet != null || preferenceSet != undefined) {
 
-            console.log("### Preference Set received from GPII Chrome Extension!"); 
+            console.log("### Preference Set received from GPII Chrome Extension!");
 
             //## simplifiedUiEnabled ##//
             // !To load the new UI as soon as possible, loadUI() is called here already!
@@ -385,52 +385,52 @@ var GPIIconnector = (function() {
                     module.loadUI(false);
             }
 
-            //## textSize ##//        
+            //## textSize ##//
             if (preferenceSet.textSize != undefined) {
                 gpiiUserSettings.textSize = preferenceSet.textSize;
             }
 
-            //## lineSpacing ##//        
+            //## lineSpacing ##//
             if (preferenceSet.lineSpacing != undefined) {
                 gpiiUserSettings.lineSpacing = preferenceSet.lineSpacing;
             }
 
-            //## textStyle ##//             
+            //## textStyle ##//
             if (preferenceSet.textStyle != undefined) {
                 gpiiUserSettings.textStyle = preferenceSet.textStyle;
             }
 
-            //## pictogramsEnabled ##//        
+            //## pictogramsEnabled ##//
             if (preferenceSet.pictogramsEnabled != undefined) {
                 gpiiUserSettings.pictogramsEnabled = preferenceSet.pictogramsEnabled;
             }
 
-            //## signLanguageEnabled ##//            
+            //## signLanguageEnabled ##//
             if (preferenceSet.signLanguage != undefined) {
                 gpiiUserSettings.signLanguage = preferenceSet.signLanguage;
             }
 
-              //## signLanguage ##//            
+              //## signLanguage ##//
             if (preferenceSet.signLanguageEnabled != undefined) {
                 gpiiUserSettings.signLanguageEnabled = preferenceSet.signLanguageEnabled;
             }
 
-            //## links ##//            
+            //## links ##//
             if (preferenceSet.links != undefined) {
                 gpiiUserSettings.links = preferenceSet.links;
             }
 
-            //## highContrastEnabled ##//            
+            //## highContrastEnabled ##//
             if (preferenceSet.highContrastEnabled != undefined) {
                 gpiiUserSettings.highContrastEnabled = preferenceSet.highContrastEnabled;
             }
 
-            //## highContrast ##//            
+            //## highContrast ##//
             if (preferenceSet.contrastTheme != undefined) {
                 gpiiUserSettings.contrastTheme = preferenceSet.contrastTheme;
             }
 
-            //## inputsLager ##//            
+            //## inputsLager ##//
             if (preferenceSet.inputsLarger != undefined) {
                 gpiiUserSettings.inputsLarger = preferenceSet.inputsLarger;
             }
@@ -483,4 +483,3 @@ var GPIIconnector = (function() {
     return module;
 
 })();
-

@@ -215,25 +215,3 @@ var AS_picsupport = (function() {
     return module;
 
 })();
-
-/*********************************/
-/***** LAYOUT AND NAVIGATION *****/
-/*********************************/
-
-/**
- * @author Annabell Schmidt
- *
- * creates or deletes the table of contents depending on the value of the parameter show
- * uses the jQuery plugin tableOfContents from https://github.com/dcneiner/TableOfContents/tree/master
- * @param {bool} show       switch for showing/deleting the toc
- */
-function AS_showTableOfContents(show) {
-    if (show) {
-        $('#toc-container ul').tableOfContents();
-        $('#toc-container').removeClass('hidden');
-
-    } else {
-        $('#toc-container').addClass('hidden');
-        $('#toc-container ul').text('');
-    }
-}
