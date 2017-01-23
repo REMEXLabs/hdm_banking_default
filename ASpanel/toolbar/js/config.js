@@ -31,7 +31,7 @@ NEW_INIT = true;
 /**********************/
 
 /**
- * This list contains all labels of the ASpanel. 
+ * This list contains all labels of the ASpanel.
  */
 var ApplicationLabels = {
     tabs : {
@@ -51,10 +51,7 @@ var ApplicationLabels = {
             en: "Language Settings",
             de: "Spracheinstellungen"
         },
-        category_5 : {
-            en: "GPII",
-            de: "GPII"  
-        }
+        
     },
     buttons : {
         resetButton: {
@@ -62,7 +59,7 @@ var ApplicationLabels = {
             de: "Zurücksetzen"
         }
     }
-}; 
+};
 
 
 /********************/
@@ -90,7 +87,7 @@ var UIComponentList = {
         category : "cat1",
         type : TYPE_SLIDER,
         minValue : 1,
-        maxValue : 3, // by changing this value the AS_textSize function must be changed too 
+        maxValue : 3, // by changing this value the AS_textSize function must be changed too
         stepSize : 0.1,
         minText : {
             en : "small",
@@ -115,7 +112,7 @@ var UIComponentList = {
                     // multiplier = 1.0;
                 // }
                 // if (multiplier > 2.0) {
-//                     
+//
                     // multiplier = 2.0;
                 // }
 
@@ -253,7 +250,7 @@ var UIComponentList = {
             parent.AS_showTableOfContents(value);
         }
     },
-    
+
     signlanguageLanguage_dropdown : {
 
        ui_component_id : "signlanguageLanguage_dropdown",
@@ -283,7 +280,7 @@ var UIComponentList = {
             parent.myURCLightController.lockSLVOptions(value);
         }
     },
-    
+
     signlanguageInterpreterName_dropdown : {
 
        ui_component_id : "signlanguageInterpreterName_dropdown",
@@ -315,7 +312,6 @@ var UIComponentList = {
             parent.slSettings.InterpreterName = value;
         }
     },
-    
-   
-};
 
+
+};

@@ -196,8 +196,8 @@ var AS_picsupport = (function() {
      * @param {string} value "on" or "off"
      */
     module.activate = function(value) {
-        
-        if (value == "picsupport-on") {          
+
+        if (value == "picsupport-on") {
             activatePicsupport();
         } else if (value == "picsupport-off") {
             deactivatePicsupport();
@@ -237,4 +237,3 @@ function AS_showTableOfContents(show) {
         $('#toc-container ul').text('');
     }
 }
-
