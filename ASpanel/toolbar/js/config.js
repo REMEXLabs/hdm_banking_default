@@ -229,6 +229,8 @@ var UIComponentList = {
         }
     },
 
+//#### SIGNLANGUAGE LANGUAGE ####//
+
     signlanguageLanguage_dropdown : {
 
        ui_component_id : "signlanguageLanguage_dropdown",
@@ -258,6 +260,8 @@ var UIComponentList = {
             parent.myURCLightController.lockSLVOptions(value);
         }
     },
+
+//#### SIGNLANGUAGE INTERPRETER ####//
 
     signlanguageInterpreterName_dropdown : {
 
@@ -290,6 +294,56 @@ var UIComponentList = {
             parent.slSettings.InterpreterName = value;
         }
     },
+
+    //#### LINKSIZE ####//
+
+    linkSize_slider : {
+
+        ui_component_id : "linkSize_slider", // used as id in html-tags, needs to be application-wide unique
+        ui_input_id : "linkSize", // used as id in html-tags, needs to be application-wide unique
+        title : {
+            en : "Link Size",
+            de : "Linkgröße"
+        },
+        defaultValue : 1.0,
+        resetValue : 1.0,
+        category : "cat3",
+        type : TYPE_SLIDER,
+        minValue : 1,
+        maxValue : 3, // by changing this value the AS_textSize function must be changed too
+        stepSize : 0.1,
+        minText : {
+            en : "small",
+            de : "klein"
+        },
+        maxText : {
+            en : "big",
+            de : "groß"
+        },
+        inputLabel : {
+            en : "times",
+            de : "mal"
+        },
+        changeEvent : function(value) {
+
+            if (parent.AS_linkSize != undefined) {
+
+                //input validation
+                var multiplier = parseFloat(value);
+
+                // if (multiplier < 1.0) {
+                    // multiplier = 1.0;
+                // }
+                // if (multiplier > 2.0) {
+//
+                    // multiplier = 2.0;
+                // }
+
+                parent.AS_linkSize.set(multiplier);
+            }
+        }
+    },
+
 
 
 };

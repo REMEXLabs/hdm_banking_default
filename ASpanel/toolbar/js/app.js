@@ -270,6 +270,9 @@ $(function() {
         signLanguageInterpreterNameDropdown = new AS_DropDown();
         signLanguageInterpreterNameDropdown.init("signlanguageInterpreterName_dropdown");
 
+        linkSizeSlider = new AS_Slider();
+        linkSizeSlider.init("linkSize_slider");
+
         ////////////////////////////
         ////// RESET FUNCTIONS /////
         ////////////////////////////
@@ -285,6 +288,7 @@ $(function() {
              textStyleDropdown.reset();
              signLanguageLanguageDropdown.reset();
              signLanguageInterpreterNameDropdown.reset();
+             linkSizeSlider.reset();
         }
 
         /////////////////////////////////

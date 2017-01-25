@@ -40,7 +40,7 @@ var AS_Slider= function() {
 
     this.reset = function() {
         console.log("Reset " + this.slider_ID);
-        this.value = this.defaultValue;       
+        this.value = this.defaultValue;
         $("#" + this.slider_ID).slider("value", this.value);
         $("#" + this.ui_input_id).val(this.value);
         UIComponentList[this.slider_ID].changeEvent(this.value);
@@ -83,7 +83,7 @@ var AS_Slider= function() {
     };
 
     /**
-     * Set the slider to value. 
+     * Set the slider to value.
      */
     this.setValue = function(value) {
         this.value = value;
@@ -93,22 +93,22 @@ var AS_Slider= function() {
         console.log("Value of " + this.slider_ID + " is set to " + parseFloat(this.getValue()));
     };
 
-    this.getValue = function() {     
+    this.getValue = function() {
         return $("#" + this.slider_ID).slider("value");
     };
 
     /**
-     * Overwirtes the default value after getting Settings from GPII or Cookie. 
+     * Overwirtes the default value after getting Settings from GPII or Cookie.
      */
     this.overwriteDefault = function () {
         //console.log("Overwrite default value of " + this.slider_ID);
         //this.defaultValue = UIComponentList[this.slider_ID].defaultValue;
-        this.value = UIComponentList[this.slider_ID].defaultValue;   
+        this.value = UIComponentList[this.slider_ID].defaultValue;
         $("#" + this.slider_ID).slider("value", this.value);
         $("#" + this.ui_input_id).val(this.value);
         UIComponentList[this.slider_ID].changeEvent(this.value);
     };
-    
+
 };
 
 
@@ -127,7 +127,7 @@ var AS_DropDown = function() {
 
     this.reset = function() {
         console.log("Reset " + this.dropdown_ID);
-        this.value = this.defaultValue;   
+        this.value = this.defaultValue;
         $("#" + this.dropdown_ID).val(this.value);
         UIComponentList[this.dropdown_ID].changeEvent(this.value);
         console.log("Value of " + this.dropdown_ID + " is set to " + this.getValue());
@@ -149,11 +149,11 @@ var AS_DropDown = function() {
         this.ui_component_id = UIComponentList[dropdown_ID].ui_component_id;
 
 
-        // Init dropdown 
+        // Init dropdown
         $("#" + dropdown_ID).change( function() {
             console.log("Dropdown List " + dropdown_ID + " changed");
             this.value = $("#" + dropdown_ID).val();
-            UIComponentList[dropdown_ID].changeEvent(this.value);          
+            UIComponentList[dropdown_ID].changeEvent(this.value);
         });
 
         $("#" + this.dropdown_ID).val(this.value);
@@ -164,16 +164,16 @@ var AS_DropDown = function() {
     };
 
      /**
-     * Set the checkbox to value. 
+     * Set the checkbox to value.
      */
-    this.setValue = function(value) {   
+    this.setValue = function(value) {
         this.value = value;
         $("#" + this.dropdown_ID).val(value);
         UIComponentList[this.dropdown_ID].changeEvent(value);
         console.log("Value of " + this.dropdown_ID + " is set to " + this.getValue());
     };
 
-    this.getValue = function() {  
+    this.getValue = function() {
         return $("#" + this.dropdown_ID).val();
     };
 
@@ -182,7 +182,7 @@ var AS_DropDown = function() {
         //this.defaultValue = UIComponentList[this.dropdown_ID].defaultValue.option_id;
         this.value = UIComponentList[this.dropdown_ID].defaultValue.option_id;
         $("#" + this.dropdown_ID).val(this.value);
-        UIComponentList[this.dropdown_ID].changeEvent(this.value);   
+        UIComponentList[this.dropdown_ID].changeEvent(this.value);
     };
 
 };
@@ -221,14 +221,14 @@ var AS_CheckBox = function() {
         this.checkbox_ID = checkbox_ID;
         this.ui_component_id = UIComponentList[checkbox_ID].ui_component_id;
 
-        // Init checkbox               
+        // Init checkbox
         $("#" + checkbox_ID).change(function() {
             console.log("Checkbox " + checkbox_ID + " clicked");
 
             UIComponentList[checkbox_ID].changeEvent($(this).is(":checked"));
             this.value = $(this).is(":checked");
 
-        }); 
+        });
 
         $("#" + checkbox_ID).prop('checked', this.value);
 
@@ -237,7 +237,7 @@ var AS_CheckBox = function() {
     };
 
      /**
-     * Set the checkbox to value. 
+     * Set the checkbox to value.
      */
     this.setValue = function(value) {
         this.value = value;
@@ -258,4 +258,3 @@ var AS_CheckBox = function() {
         UIComponentList[this.checkbox_ID].changeEvent(this.value);
     };
 };
-

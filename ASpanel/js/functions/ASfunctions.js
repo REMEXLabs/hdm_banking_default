@@ -215,3 +215,64 @@ var AS_picsupport = (function() {
     return module;
 
 })();
+
+
+/****************************/
+/***** LINKS AND BUTTONS *****/
+/****************************/
+
+/*
+ * Set linksize properties.
+ *
+ * @author Lena Krächan
+ */
+var AS_linkSize = (function() {
+    var module = {};
+
+    // Get default value from config.js
+    function getDefaultValue() {
+        return document.getElementById('myASpanel-iFrame').contentWindow.Toolbar.UIComponentList[6].defaultValue;
+    };
+
+    function linkSize2Mulitplier(inputValue) {
+        if (inputValue < 1.0) {
+            inputValue = 1.0;
+        }
+        else if (inputValue == 3.0) {
+            inputValue = 3.0;
+        }
+        else if (inputValue > 3.0) {
+            if (inputValue < 12.0) {
+                inputValue = 1;
+            }
+            else if (inputValue >= 36.0) {
+                inputValue = 3;
+            } else if (inputValue > 12.0 && inputValue < 36.0) {
+                inputValue = 3.0 / 36.0 * inputValue;
+            }
+        }
+
+        return inputValue;
+    };
+
+    /**
+     * Changes the link size according to the parameter multiplier.
+     * @param {number} multiplier   multiplier between 1 and 2 with which the link size is multiplied
+     */
+    module.set = function(multiplier) {
+
+        var newLinkSize = parseFloat(1 * linkSize2Mulitplier(multiplier)) + 'em';
+        $('a').css('font-size', newLinkSize);
+    };
+
+    /**
+     * Reset linksize to default value.
+     */
+    module.reset = function() {
+        var newLinkSize = parseFloat(1 * getDefaultValue()) + 'em';
+        $('a').css('font-size', newLinkSize);
+    };
+
+    return module;
+
+})();
