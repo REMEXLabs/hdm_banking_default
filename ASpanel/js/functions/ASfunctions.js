@@ -75,7 +75,7 @@ var AS_textSize = (function() {
 })();
 
 /*
- * Set text sytle properties.
+ * Set text style properties.
  *
  * @author Patrick Münster
  */
@@ -271,6 +271,63 @@ var AS_linkSize = (function() {
     module.reset = function() {
         var newLinkSize = parseFloat(1 * getDefaultValue()) + 'em';
         $('a').css('font-size', newLinkSize);
+    };
+
+    return module;
+
+})();
+
+
+/*
+ * Set buttonsize properties.
+ *
+ * @author Lena Krächan
+ */
+var AS_buttonSize = (function() {
+    var module = {};
+
+    // Get default value from config.js
+    function getDefaultValue() {
+        return document.getElementById('myASpanel-iFrame').contentWindow.Toolbar.UIComponentList[7].defaultValue;
+    };
+
+    function buttonSize2Mulitplier(inputValue) {
+        if (inputValue < 1.0) {
+            inputValue = 1.0;
+        }
+        else if (inputValue == 3.0) {
+            inputValue = 3.0;
+        }
+        else if (inputValue > 3.0) {
+            if (inputValue < 12.0) {
+                inputValue = 1;
+            }
+            else if (inputValue >= 36.0) {
+                inputValue = 3;
+            } else if (inputValue > 12.0 && inputValue < 36.0) {
+                inputValue = 3.0 / 36.0 * inputValue;
+            }
+        }
+
+        return inputValue;
+    };
+
+    /**
+     * Changes the link size according to the parameter multiplier.
+     * @param {number} multiplier   multiplier between 1 and 2 with which the link size is multiplied
+     */
+    module.set = function(multiplier) {
+
+        var newButtonSize = parseFloat(1 * buttonSize2Mulitplier(multiplier)) + 'em';
+        $('#myButton').css('height', '100px');
+    };
+
+    /**
+     * Reset linksize to default value.
+     */
+    module.reset = function() {
+        var newButtonSize = parseFloat(1 * getDefaultValue()) + 'em';
+        $('#myButton').css('padding', "20px");
     };
 
     return module;

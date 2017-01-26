@@ -124,6 +124,9 @@ var picsupportDropdown;
 var signLanguageLanguageDropdown;
 var signLanguageInterpreterNameDropdown;
 
+var linkSizeSlider;
+var buttonSizeSlider
+
 
 
 //////////////////
@@ -273,6 +276,9 @@ $(function() {
         linkSizeSlider = new AS_Slider();
         linkSizeSlider.init("linkSize_slider");
 
+        buttonSizeSlider=new AS_Slider();
+        buttonSizeSlider.init("buttonSize_slider");
+
         ////////////////////////////
         ////// RESET FUNCTIONS /////
         ////////////////////////////
@@ -289,6 +295,7 @@ $(function() {
              signLanguageLanguageDropdown.reset();
              signLanguageInterpreterNameDropdown.reset();
              linkSizeSlider.reset();
+             buttonSizeSlider.reset();
         }
 
         /////////////////////////////////

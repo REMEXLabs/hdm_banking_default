@@ -310,7 +310,7 @@ var UIComponentList = {
         category : "cat3",
         type : TYPE_SLIDER,
         minValue : 1,
-        maxValue : 3, // by changing this value the AS_textSize function must be changed too
+        maxValue : 3, // by changing this value the AS_linkSize function must be changed too
         stepSize : 0.1,
         minText : {
             en : "small",
@@ -344,6 +344,54 @@ var UIComponentList = {
         }
     },
 
+    //#### BUTTONSIZE ####//
+
+    buttonSize_slider : {
+
+        ui_component_id : "buttonSize_slider", // used as id in html-tags, needs to be application-wide unique
+        ui_input_id : "buttonSize", // used as id in html-tags, needs to be application-wide unique
+        title : {
+            en : "Button Size",
+            de : "Buttongröße"
+        },
+        defaultValue : 1.0,
+        resetValue : 1.0,
+        category : "cat3",
+        type : TYPE_SLIDER,
+        minValue : 1,
+        maxValue : 3, // by changing this value the AS_buttonSize function must be changed too
+        stepSize : 0.1,
+        minText : {
+            en : "small",
+            de : "klein"
+        },
+        maxText : {
+            en : "big",
+            de : "groß"
+        },
+        inputLabel : {
+            en : "times",
+            de : "mal"
+        },
+        changeEvent : function(value) {
+
+            if (parent.AS_buttonSize != undefined) {
+
+                //input validation
+                var multiplier = parseFloat(value);
+
+                // if (multiplier < 1.0) {
+                    // multiplier = 1.0;
+                // }
+                // if (multiplier > 2.0) {
+    //
+                    // multiplier = 2.0;
+                // }
+
+                parent.AS_buttonSize.set(multiplier);
+            }
+        }
+    },
 
 
 };
