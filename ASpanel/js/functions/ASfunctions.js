@@ -171,56 +171,6 @@ var AS_lineSpacing = (function() {
 
 })();
 
-
-/*
- * @author Patrick Münster
- *
- * Picsupport settings
- */
-var AS_picsupport = (function() {
-
-    var module = {};
-
-    function activatePicsupport() {
-        console.log("Picsupport activated");
-
-    }
-
-    function deactivatePicsupport() {
-        console.log("Picsupport deacivated");
-
-    }
-
-    /**
-     * Activates or deactivates the Picsupport according to the parameter.
-     * @param {string} value "on" or "off"
-     */
-    module.activate = function(value) {
-
-        if (value == "picsupport-on") {
-            activatePicsupport();
-        } else if (value == "picsupport-off") {
-            deactivatePicsupport();
-        }
-    };
-
-    /**
-     * Choose the used Language for the Picsupport according to the parameter.
-     * @param {string} value UNFINISHED
-     */
-    module.setLanguage = function(value) {
-
-    };
-
-    return module;
-
-})();
-
-
-/****************************/
-/***** LINKS AND BUTTONS *****/
-/****************************/
-
 /*
  * Set linksize properties.
  *
@@ -278,56 +228,49 @@ var AS_linkSize = (function() {
 })();
 
 
+
+/****************************/
+/***** LANGUAGE SETTINGS *****/
+/****************************/
+
 /*
- * Set buttonsize properties.
+ * @author Patrick Münster
  *
- * @author Lena Krächan
+ * Picsupport settings
  */
-var AS_buttonSize = (function() {
+var AS_picsupport = (function() {
+
     var module = {};
 
-    // Get default value from config.js
-    function getDefaultValue() {
-        return document.getElementById('myASpanel-iFrame').contentWindow.Toolbar.UIComponentList[7].defaultValue;
-    };
+    function activatePicsupport() {
+        console.log("Picsupport activated");
 
-    function buttonSize2Mulitplier(inputValue) {
-        if (inputValue < 1.0) {
-            inputValue = 1.0;
-        }
-        else if (inputValue == 3.0) {
-            inputValue = 3.0;
-        }
-        else if (inputValue > 3.0) {
-            if (inputValue < 12.0) {
-                inputValue = 1;
-            }
-            else if (inputValue >= 36.0) {
-                inputValue = 3;
-            } else if (inputValue > 12.0 && inputValue < 36.0) {
-                inputValue = 3.0 / 36.0 * inputValue;
-            }
-        }
+    }
 
-        return inputValue;
+    function deactivatePicsupport() {
+        console.log("Picsupport deacivated");
+
+    }
+
+    /**
+     * Activates or deactivates the Picsupport according to the parameter.
+     * @param {string} value "on" or "off"
+     */
+    module.activate = function(value) {
+
+        if (value == "picsupport-on") {
+            activatePicsupport();
+        } else if (value == "picsupport-off") {
+            deactivatePicsupport();
+        }
     };
 
     /**
-     * Changes the link size according to the parameter multiplier.
-     * @param {number} multiplier   multiplier between 1 and 2 with which the link size is multiplied
+     * Choose the used Language for the Picsupport according to the parameter.
+     * @param {string} value UNFINISHED
      */
-    module.set = function(multiplier) {
+    module.setLanguage = function(value) {
 
-        var newButtonSize = parseFloat(1 * buttonSize2Mulitplier(multiplier)) + 'em';
-        $('#myButton').css('height', '100px');
-    };
-
-    /**
-     * Reset linksize to default value.
-     */
-    module.reset = function() {
-        var newButtonSize = parseFloat(1 * getDefaultValue()) + 'em';
-        $('#myButton').css('padding', "20px");
     };
 
     return module;

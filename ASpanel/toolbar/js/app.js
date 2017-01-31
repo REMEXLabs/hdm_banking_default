@@ -125,7 +125,6 @@ var signLanguageLanguageDropdown;
 var signLanguageInterpreterNameDropdown;
 
 var linkSizeSlider;
-var buttonSizeSlider
 
 
 
@@ -183,8 +182,6 @@ $(function() {
 
         // HTML string for tabs
         var html_cat1 = "";
-        // var html_cat2 = "";
-        var html_cat3 = "";
         var html_cat4 = "";
 
         for (var component in UIComponentList) {
@@ -201,11 +198,6 @@ $(function() {
                 case "cat1":
                     html_cat1 += createComponent(UIComponentList[component]);
                     break;
-
-                case "cat3":
-                    html_cat3 += createComponent(UIComponentList[component]);
-                    break;
-
                 case "cat4":
                     html_cat4 += createComponent(UIComponentList[component]);
                     break;
@@ -219,7 +211,6 @@ $(function() {
 
         // Append html code.
         $("#category-1-dynamic-components .componentlist").html(html_cat1);
-        $("#category-3-dynamic-components .componentlist").html(html_cat3);
         $("#category-4-dynamic-components .componentlist").html(html_cat4);
 
 
@@ -276,8 +267,6 @@ $(function() {
         linkSizeSlider = new AS_Slider();
         linkSizeSlider.init("linkSize_slider");
 
-        buttonSizeSlider=new AS_Slider();
-        buttonSizeSlider.init("buttonSize_slider");
 
         ////////////////////////////
         ////// RESET FUNCTIONS /////
@@ -295,7 +284,6 @@ $(function() {
              signLanguageLanguageDropdown.reset();
              signLanguageInterpreterNameDropdown.reset();
              linkSizeSlider.reset();
-             buttonSizeSlider.reset();
         }
 
         /////////////////////////////////

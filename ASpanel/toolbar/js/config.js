@@ -39,10 +39,12 @@ var ApplicationLabels = {
             en : "Text and Display",
             de : "Text und Anzeige"
         },
+        // not in use
         category_2 : {
           en : "Layout and Navigation",
           de : "Layout und Navigation"
         },
+        // not in use
         category_3 : {
             en: "Links and Buttons",
             de: "Links und Buttons"
@@ -120,6 +122,56 @@ var UIComponentList = {
             }
         }
     },
+
+
+        //#### LINKSIZE ####//
+
+        linkSize_slider : {
+
+            ui_component_id : "linkSize_slider", // used as id in html-tags, needs to be application-wide unique
+            ui_input_id : "linkSize", // used as id in html-tags, needs to be application-wide unique
+            title : {
+                en : "Link Size",
+                de : "Linkgröße"
+            },
+            defaultValue : 1.0,
+            resetValue : 1.0,
+            category : "cat1",
+            type : TYPE_SLIDER,
+            minValue : 1,
+            maxValue : 3, // by changing this value the AS_linkSize function must be changed too
+            stepSize : 0.1,
+            minText : {
+                en : "small",
+                de : "klein"
+            },
+            maxText : {
+                en : "big",
+                de : "groß"
+            },
+            inputLabel : {
+                en : "times",
+                de : "mal"
+            },
+            changeEvent : function(value) {
+
+                if (parent.AS_linkSize != undefined) {
+
+                    //input validation
+                    var multiplier = parseFloat(value);
+
+                    // if (multiplier < 1.0) {
+                        // multiplier = 1.0;
+                    // }
+                    // if (multiplier > 2.0) {
+    //
+                        // multiplier = 2.0;
+                    // }
+
+                    parent.AS_linkSize.set(multiplier);
+                }
+            }
+        },
 
     //#### LINESPACING ####//
 
@@ -215,7 +267,7 @@ var UIComponentList = {
             option_id : "picsupport-off",
             name : "Off"
         },
-        category : "cat1",
+        category : "cat4",
         type : TYPE_DROPDOWN,
         options : [{
             option_id : "picsupport-off", // used as value-attribute in option-tag
@@ -294,104 +346,5 @@ var UIComponentList = {
             parent.slSettings.InterpreterName = value;
         }
     },
-
-    //#### LINKSIZE ####//
-
-    linkSize_slider : {
-
-        ui_component_id : "linkSize_slider", // used as id in html-tags, needs to be application-wide unique
-        ui_input_id : "linkSize", // used as id in html-tags, needs to be application-wide unique
-        title : {
-            en : "Link Size",
-            de : "Linkgröße"
-        },
-        defaultValue : 1.0,
-        resetValue : 1.0,
-        category : "cat3",
-        type : TYPE_SLIDER,
-        minValue : 1,
-        maxValue : 3, // by changing this value the AS_linkSize function must be changed too
-        stepSize : 0.1,
-        minText : {
-            en : "small",
-            de : "klein"
-        },
-        maxText : {
-            en : "big",
-            de : "groß"
-        },
-        inputLabel : {
-            en : "times",
-            de : "mal"
-        },
-        changeEvent : function(value) {
-
-            if (parent.AS_linkSize != undefined) {
-
-                //input validation
-                var multiplier = parseFloat(value);
-
-                // if (multiplier < 1.0) {
-                    // multiplier = 1.0;
-                // }
-                // if (multiplier > 2.0) {
-//
-                    // multiplier = 2.0;
-                // }
-
-                parent.AS_linkSize.set(multiplier);
-            }
-        }
-    },
-
-    //#### BUTTONSIZE ####//
-
-    buttonSize_slider : {
-
-        ui_component_id : "buttonSize_slider", // used as id in html-tags, needs to be application-wide unique
-        ui_input_id : "buttonSize", // used as id in html-tags, needs to be application-wide unique
-        title : {
-            en : "Button Size",
-            de : "Buttongröße"
-        },
-        defaultValue : 1.0,
-        resetValue : 1.0,
-        category : "cat3",
-        type : TYPE_SLIDER,
-        minValue : 1,
-        maxValue : 3, // by changing this value the AS_buttonSize function must be changed too
-        stepSize : 0.1,
-        minText : {
-            en : "small",
-            de : "klein"
-        },
-        maxText : {
-            en : "big",
-            de : "groß"
-        },
-        inputLabel : {
-            en : "times",
-            de : "mal"
-        },
-        changeEvent : function(value) {
-
-            if (parent.AS_buttonSize != undefined) {
-
-                //input validation
-                var multiplier = parseFloat(value);
-
-                // if (multiplier < 1.0) {
-                    // multiplier = 1.0;
-                // }
-                // if (multiplier > 2.0) {
-    //
-                    // multiplier = 2.0;
-                // }
-
-                parent.AS_buttonSize.set(multiplier);
-            }
-        }
-    },
-
 
 };
