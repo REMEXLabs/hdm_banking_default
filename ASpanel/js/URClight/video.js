@@ -29,12 +29,12 @@ function handleSignLanguageButtons() {
 
 
     var video = document.getElementById("signLanguageVideoContainter");
-    
+
     $("body").on("click", "a.urclSignLanguageVideo", function () {
 
     });
-    
-    
+
+
 
     var videoLinks = document.querySelectorAll("a.urclSignLanguageVideo");
     for (var i = 0; i < videoLinks.length; i++) {
