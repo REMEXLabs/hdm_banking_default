@@ -60,6 +60,11 @@ var AS_textSize = (function() {
 
         var newTextSize = parseFloat(1 * fontSize2Mulitplier(multiplier)) + 'em';
         $('body').css('font-size', newTextSize);
+
+        //change the height of the header container according to linksize
+        var newHeaderHeight=$('#nav-ul').height();
+        $('#header').height(newHeaderHeight);
+
     };
 
     /**
@@ -213,6 +218,11 @@ var AS_linkSize = (function() {
 
         var newLinkSize = parseFloat(1 * linkSize2Mulitplier(multiplier)) + 'em';
         $('a').css('font-size', newLinkSize);
+
+        //change the height of the header container according to linksize
+        var newHeaderHeight=$('#nav-ul').height();
+        console.log("Set Header height to: "+ newHeaderHeight);
+        $('#header').height(newHeaderHeight);
     };
 
     /**
@@ -221,6 +231,7 @@ var AS_linkSize = (function() {
     module.reset = function() {
         var newLinkSize = parseFloat(1 * getDefaultValue()) + 'em';
         $('a').css('font-size', newLinkSize);
+
     };
 
     return module;
