@@ -128,7 +128,8 @@
             <input type="button" id="transConfirmBtn" ng-click="go('/finish')" value="{{ 'TRANSFER_ACTION_BTN' | translate }}" style="background-color:red;">
           </div>
           <div>
-            <input type="reset" value="{{ 'CANCEL_BTN' | translate}}" class="alt">
+            <!-- when reset button is clicked return to previous page, the one where the tranfser was started -->
+            <input type="reset" value="{{ 'CANCEL_BTN' | translate}}" class="alt" onclick=window.history.back();>
           </div>
         </div>
       </div>
